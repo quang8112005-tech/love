@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lời Tỏ Tình Dễ Thương</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111827;
+      --green: #16a34a;
+      --red: #ef4444;
+    }
+    * { box-sizing: border-box; }
+    html,body { height:100%; margin:0; font-family: Arial, sans-serif; background: var(--bg); color:var(--text); }
+    .wrap {
+      min-height:100%;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      padding:40px 20px;
+      text-align:center;
+    }
+    .cute {
+      width:220px;
+      max-width:50vw;
+      display:block;
+      margin: 0 auto 18px;
+    }
+    h1 {
+      font-size:28px;
+      margin:6px 0 16px;
+      font-weight:700;
+    }
+    .btns { display:flex; gap:18px; justify-content:center; align-items:center; margin-top:8px; position:relative; }
+    button {
+      padding:10px 22px;
+      font-size:18px;
+      border:none;
+      border-radius:10px;
+      cursor:pointer;
+      color:white;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    button:active { transform: translateY(1px) }
+    #yes { background: var(--green); }
+    #no {
+      background: var(--red);
+      position:relative;
+    }
+    #no.moved {
+      transition: transform .18s cubic-bezier(.3,.8,.4,1);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- Sửa đường dẫn ảnh để chạy trực tiếp trên điện thoại -->
+    <img class="cute" src="cute.png.gif" alt="cute bear" />
+
+    <h1>Em đồng ý làm người iu anh nhaaa bé :3</h1>
+
+    <div class="btns">
+      <button id="yes">Có ạ</button>
+      <button id="no">Khôngg</button>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById('no');
+    const yesBtn = document.getElementById('yes');
+
+    noBtn.addEventListener('mouseover', () => {
+      const parentRect = document.documentElement.getBoundingClientRect();
+      const maxX = parentRect.width - noBtn.offsetWidth - 20;
+      const maxY = parentRect.height - noBtn.offsetHeight - 20;
+
+      const randX = Math.random() * maxX;
+      const randY = Math.random() * maxY;
+
+      noBtn.classList.add('moved');
+      noBtn.style.transform = `translate(${randX}px, ${randY}px)`;
+      noBtn.style.position = 'fixed';
+      noBtn.style.left = '0';
+      noBtn.style.top = '0';
+
+      setTimeout(()=> noBtn.classList.remove('moved'), 300);
+    });
+
+    yesBtn.addEventListener('click', () => {
+      alert('Yêuuuu bé nhìuu :3');
+    });
+  </script>
+</body>
+</html>
